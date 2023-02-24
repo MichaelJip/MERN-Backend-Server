@@ -1,4 +1,4 @@
-import Express from "express";
+import express from "express";
 import {
   forgetPassword,
   getMyProfile,
@@ -13,7 +13,7 @@ import {
 import { isAuthenticated } from "../middleware/auth.js";
 import { singleUpload } from "../middleware/multer.js";
 
-const router = Express.Router();
+const router = express.Router();
 
 router.post("/login", login);
 

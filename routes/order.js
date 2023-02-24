@@ -1,4 +1,4 @@
-import Express from "express";
+import express from "express";
 import {
   createOrder,
   getAdminOrder,
@@ -9,7 +9,7 @@ import {
 } from "../controllers/order.js";
 import { isAdmin, isAuthenticated } from "../middleware/auth.js";
 
-const router = Express.Router();
+const router = express.Router();
 
 router.post("/new", isAuthenticated, createOrder);
 router.post("/payment", isAuthenticated, processPayment);

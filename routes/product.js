@@ -1,4 +1,4 @@
-import Express from "express";
+import express from "express";
 import {
   addCategory,
   addProductImage,
@@ -15,7 +15,7 @@ import {
 import { isAuthenticated, isAdmin } from "../middleware/auth.js";
 import { singleUpload } from "../middleware/multer.js";
 
-const router = Express.Router();
+const router = express.Router();
 
 router.get("/all", getAllProduct);
 router.get("/admin", isAuthenticated, isAdmin, getAdminProduct);

@@ -15,9 +15,7 @@ export const login = asyncError(async (req, res, next) => {
   if (!user) {
     return next(new ErrorHandler("Incorrect Email Or Password", 400));
   }
-  if (!password) {
-    return next(new ErrorHandler("Please Enter Password", 400));
-  }
+  if (!password) return next(new ErrorHandler("Please Enter Password", 400));
 
   // Handler Error
   const isMatched = await user.comparePassword(password);

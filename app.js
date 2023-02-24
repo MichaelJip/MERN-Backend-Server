@@ -1,4 +1,4 @@
-import Express from "express";
+import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -6,11 +6,11 @@ import cors from "cors";
 dotenv.config({
   path: "./data/config.env",
 });
-export const app = Express();
+export const app = express();
 
 // using Middleware
 
-app.use(Express.json());
+app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
