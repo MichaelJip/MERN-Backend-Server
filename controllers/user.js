@@ -12,17 +12,31 @@ import cloudinary from "cloudinary";
 export const login = asyncError(async (req, res, next) => {
   const { email, password } = req?.body;
   const user = await User.findOne({ email }).select("+password");
-  if (!user) {
-    return next(new ErrorHandler("Incorrect Email Or Password", 400));
-  }
-  if (!password) return next(new ErrorHandler("Please Enter Password", 400));
+  if (!user)
+    res.status(400).json({
+      success: false,
+      message: "Incorrect Email Or Password",
+    });
+  // return next(new ErrorHandler("Incorrect Email Or Password", 400));
+
+  if (!password)
+    res.status(400).json({
+      success: false,
+      message: "Incorrect Email Or Password",
+    });
+  // return next(new ErrorHandler("Please Enter Password", 400));
 
   // Handler Error
   const isMatched = await user.comparePassword(password);
 
-  if (!isMatched) {
-    return next(new ErrorHandler("Incorrect Email Or Password", 400));
-  }
+  if (!isMatched)
+    res.status(400).json({
+      success: false,
+      message: "Incorrect Email Or Password",
+    });
+  // {
+  //   return next(new ErrorHandler("Incorrect Email Or Password", 400));
+  // }
   sendToken(user, res, `Welcome Back, ${user.name}`, 200);
 });
 
